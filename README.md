@@ -1,6 +1,6 @@
 # Real-time Crisis Detection Model Using Tweets
 
-**📊 [Project Presentation](https://docs.google.com/presentation/d/1XSLAchbDEVoZfpL5zJNJKuibveE-X8EHiaOoiQatR94/edit?slide=id.g31b060f16e3_2_11#slide=id.g31b060f16e3_2_11)**
+**📊 [Project Presentation](https://docs.google.com/presentation/d/1XSLAchbDEVoZfpL5zJNJKuibveE-X8EHiaOoiQatR94/)**
 
 ## Overview
 
