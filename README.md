@@ -31,6 +31,8 @@ An AI-powered tool that analyzes real-time tweets to detect crisis events like r
 - **Automated Data Collection**: Selenium-powered tweet scraping for real-time data ingestion
 - **Multi-model Ensemble**: Combines multiple ML algorithms for improved reliability
 
+## Interface
+![Crisis Detection Model](https://drive.google.com/uc?id=1Cw_TOs-ff7B9pPknGoNjyWJJQq1wj_AY)
 
 ## Model Performance
 
@@ -52,9 +54,6 @@ An AI-powered tool that analyzes real-time tweets to detect crisis events like r
 3. **Stopword Removal**: Filters out common non-informative words
 4. **Lemmatization**: Reduces words to their base forms
 5. **TF-IDF Vectorization**: Converts text to numerical features
-
-## Interface
-![Crisis Detection Model](https://drive.google.com/uc?id=1Cw_TOs-ff7B9pPknGoNjyWJJQq1wj_AY)
 
 ## Deployment
 
