@@ -76,31 +76,6 @@ An AI-powered tool that analyzes real-time tweets to detect crisis events like r
 - Scalability for high-volume processing
 - Integration with alerting systems
 
-## Limitations
-
-- **Language Support**: Currently optimized for English tweets
-- **Data Dependencies**: Requires consistent data format and quality
-- **Model Drift**: Performance may degrade over time without retraining
-- **Geographic Coverage**: Limited by availability of location data
-- **Real-time Constraints**: Processing speed vs. accuracy trade-offs
-
-## Future Enhancements
-
-- Multi-language support for global coverage
-- Advanced transformer models (BERT, GPT-based)
-- Real-time dashboard with live updates
-- Mobile application for crisis alerts
-- Integration with emergency response systems
-- Improved deep learning architectures
-- Ensemble methods combining top models
-
-## Research References
-
-This project builds upon key research contributions:
-- **Ashktorab et al. (2014)**: Tweedr system for disaster tweet classification
-- **Chaudhari & Govilkar (2015)**: ML techniques for sentiment classification
-- **Nguyen et al. (2016)**: CNN-based disaster tweet classification
-
 ## File Descriptions
 
 ### Core Files
@@ -243,6 +218,32 @@ probabilities = model.predict_proba(X_new)
 from IPython.display import IFrame
 IFrame('cleaned_tweets_map.html', width=800, height=600)
 ```
+
+## Limitations
+
+- **Language Support**: Currently optimized for English tweets
+- **Data Dependencies**: Requires consistent data format and quality
+- **Model Drift**: Performance may degrade over time without retraining
+- **Geographic Coverage**: Limited by availability of location data
+- **Real-time Constraints**: Processing speed vs. accuracy trade-offs
+
+## Future Enhancements
+
+- Multi-language support for global coverage
+- Advanced transformer models (BERT, GPT-based)
+- Real-time dashboard with live updates
+- Mobile application for crisis alerts
+- Integration with emergency response systems
+- Improved deep learning architectures
+- Ensemble methods combining top models
+
+## Research References
+
+This project builds upon key research contributions:
+- **Ashktorab et al. (2014)**: Tweedr system for disaster tweet classification
+- **Chaudhari & Govilkar (2015)**: ML techniques for sentiment classification
+- **Nguyen et al. (2016)**: CNN-based disaster tweet classification
+
 
 ## License
 
