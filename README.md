@@ -31,6 +31,76 @@ An AI-powered tool that analyzes real-time tweets to detect crisis events like r
 - **Automated Data Collection**: Selenium-powered tweet scraping for real-time data ingestion
 - **Multi-model Ensemble**: Combines multiple ML algorithms for improved reliability
 
+
+## Model Performance
+
+| Model | Embedding | F1-Score | Performance Notes |
+|-------|-----------|----------|-------------------|
+| **MLP** | TF-IDF | **92.68%** | Best overall performance |
+| **Random Forest** | TF-IDF | **92.24%** | Top ensemble method |
+| **SVM** | TF-IDF | **91.43%** | Robust high-dimensional classifier |
+| **XGBoost** | TF-IDF | **91.11%** | Efficient gradient boosting |
+| **Logistic Regression** | TF-IDF | **91.07%** | Strong baseline performance |
+| **Decision Tree** | TF-IDF | **90.87%** | Good non-linear pattern capture |
+| **CNN** | TF-IDF | **89.68%** | Deep learning approach |
+
+## Data Preprocessing
+
+### Text Cleaning Pipeline
+1. **Noise Removal**: Eliminates mentions, hashtags, URLs, and emojis
+2. **Normalization**: Converts to lowercase and removes special characters
+3. **Stopword Removal**: Filters out common non-informative words
+4. **Lemmatization**: Reduces words to their base forms
+5. **TF-IDF Vectorization**: Converts text to numerical features
+
+## Deployment
+
+### Development Workflow
+```bash
+# 1. Data Collection
+# Run Interface.ipynb to collect new tweet data
+
+# 2. Model Training
+# Run ML_Project_Tweet_Detection.ipynb to train/update models
+
+# 3. Real-time Monitoring
+# Use trained models for live crisis detection
+
+# 4. Visualization
+# Generate updated maps and visualizations
+```
+
+### Production Considerations
+- Model retraining with new data
+- Performance monitoring and validation
+- Scalability for high-volume processing
+- Integration with alerting systems
+
+## Limitations
+
+- **Language Support**: Currently optimized for English tweets
+- **Data Dependencies**: Requires consistent data format and quality
+- **Model Drift**: Performance may degrade over time without retraining
+- **Geographic Coverage**: Limited by availability of location data
+- **Real-time Constraints**: Processing speed vs. accuracy trade-offs
+
+## Future Enhancements
+
+- Multi-language support for global coverage
+- Advanced transformer models (BERT, GPT-based)
+- Real-time dashboard with live updates
+- Mobile application for crisis alerts
+- Integration with emergency response systems
+- Improved deep learning architectures
+- Ensemble methods combining top models
+
+## Research References
+
+This project builds upon key research contributions:
+- **Ashktorab et al. (2014)**: Tweedr system for disaster tweet classification
+- **Chaudhari & Govilkar (2015)**: ML techniques for sentiment classification
+- **Nguyen et al. (2016)**: CNN-based disaster tweet classification
+
 ## File Descriptions
 
 ### Core Files
@@ -173,75 +243,6 @@ probabilities = model.predict_proba(X_new)
 from IPython.display import IFrame
 IFrame('cleaned_tweets_map.html', width=800, height=600)
 ```
-
-## Model Performance
-
-| Model | Embedding | F1-Score | Performance Notes |
-|-------|-----------|----------|-------------------|
-| **MLP** | TF-IDF | **92.68%** | Best overall performance |
-| **Random Forest** | TF-IDF | **92.24%** | Top ensemble method |
-| **SVM** | TF-IDF | **91.43%** | Robust high-dimensional classifier |
-| **XGBoost** | TF-IDF | **91.11%** | Efficient gradient boosting |
-| **Logistic Regression** | TF-IDF | **91.07%** | Strong baseline performance |
-| **Decision Tree** | TF-IDF | **90.87%** | Good non-linear pattern capture |
-| **CNN** | TF-IDF | **89.68%** | Deep learning approach |
-
-## Data Preprocessing
-
-### Text Cleaning Pipeline
-1. **Noise Removal**: Eliminates mentions, hashtags, URLs, and emojis
-2. **Normalization**: Converts to lowercase and removes special characters
-3. **Stopword Removal**: Filters out common non-informative words
-4. **Lemmatization**: Reduces words to their base forms
-5. **TF-IDF Vectorization**: Converts text to numerical features
-
-## Deployment
-
-### Development Workflow
-```bash
-# 1. Data Collection
-# Run Interface.ipynb to collect new tweet data
-
-# 2. Model Training
-# Run ML_Project_Tweet_Detection.ipynb to train/update models
-
-# 3. Real-time Monitoring
-# Use trained models for live crisis detection
-
-# 4. Visualization
-# Generate updated maps and visualizations
-```
-
-### Production Considerations
-- Model retraining with new data
-- Performance monitoring and validation
-- Scalability for high-volume processing
-- Integration with alerting systems
-
-## Limitations
-
-- **Language Support**: Currently optimized for English tweets
-- **Data Dependencies**: Requires consistent data format and quality
-- **Model Drift**: Performance may degrade over time without retraining
-- **Geographic Coverage**: Limited by availability of location data
-- **Real-time Constraints**: Processing speed vs. accuracy trade-offs
-
-## Future Enhancements
-
-- Multi-language support for global coverage
-- Advanced transformer models (BERT, GPT-based)
-- Real-time dashboard with live updates
-- Mobile application for crisis alerts
-- Integration with emergency response systems
-- Improved deep learning architectures
-- Ensemble methods combining top models
-
-## Research References
-
-This project builds upon key research contributions:
-- **Ashktorab et al. (2014)**: Tweedr system for disaster tweet classification
-- **Chaudhari & Govilkar (2015)**: ML techniques for sentiment classification
-- **Nguyen et al. (2016)**: CNN-based disaster tweet classification
 
 ## License
 
