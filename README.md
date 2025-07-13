@@ -2,8 +2,6 @@
 
 **📊 [Project Presentation](https://docs.google.com/presentation/d/1XSLAchbDEVoZfpL5zJNJKuibveE-X8EHiaOoiQatR94/)**
 
-![Crisis Detection Model](https://drive.google.com/uc?id=1w4thwrdBKBplRXaXMQ8EZyLPNdqug5wr)
-
 ## Overview
 
 An AI-powered tool that analyzes real-time tweets to detect crisis events like riots, civil unrest, and natural disasters, providing live information to people in affected areas. This system combines machine learning with real-time data collection to enhance situational awareness during emergency situations.
@@ -54,6 +52,9 @@ An AI-powered tool that analyzes real-time tweets to detect crisis events like r
 3. **Stopword Removal**: Filters out common non-informative words
 4. **Lemmatization**: Reduces words to their base forms
 5. **TF-IDF Vectorization**: Converts text to numerical features
+
+## Interface
+![Crisis Detection Model](https://drive.google.com/uc?id=1Cw_TOs-ff7B9pPknGoNjyWJJQq1wj_AY)
 
 ## Deployment
 
