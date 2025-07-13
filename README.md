@@ -1,46 +1,120 @@
 # Real-time Crisis Detection Model Using Tweets
 
+**📊 [Project Presentation](https://docs.google.com/presentation/d/1XSLAchbDEVoZfpL5zJNJKuibveE-X8EHiaOoiQatR94/edit?slide=id.g31b060f16e3_2_11#slide=id.g31b060f16e3_2_11)**
+
 ## Overview
 
 An AI-powered tool that analyzes real-time tweets to detect crisis events like riots, civil unrest, and natural disasters, providing live information to people in affected areas. This system combines machine learning with real-time data collection to enhance situational awareness during emergency situations.
 
+## Project Structure
+
+```
+├── Interface.ipynb                                  # Data extraction logic and user interface
+├── ML_Project_Tweet_Detection.ipynb               # Main project notebook with ML models
+├── ML_Project.pdf                                  # Project report and documentation
+├── README.md                                       # Project documentation
+├── cleaned_tweets_data_with_punctuation.csv       # Preprocessed dataset
+├── cleaned_tweets_map.html                        # Interactive map visualization
+├── final_mlp_model.joblib                         # Trained MLP model (best performer)
+├── latest_tweets_data.csv                         # Most recent scraped tweet data
+└── tfidf_vectorizer.joblib                        # TF-IDF vectorizer for text processing
+```
+
 ## Key Features
 
 - **Real-time Tweet Analysis**: Continuous monitoring and classification of tweets for crisis detection
-- **High Accuracy**: Machine learning model achieving 93% accuracy in crisis/non-crisis classification
+- **High Accuracy**: Machine learning model achieving 92.68% F1-score in crisis/non-crisis classification
+- **Multiple Model Support**: Ensemble methods, neural networks, and deep learning models
+- **Advanced Feature Engineering**: TF-IDF vectorization with dimensionality reduction options
 - **GPS-based Filtering**: Location-aware crisis detection for targeted alerts
 - **Interactive Map Interface**: Visual representation of crisis events with geographic context
 - **Automated Data Collection**: Selenium-powered tweet scraping for real-time data ingestion
 - **Multi-model Ensemble**: Combines multiple ML algorithms for improved reliability
 
+## File Descriptions
+
+### Core Files
+
+- **`Interface.ipynb`**: Contains the data extraction logic and user interface for the crisis detection system. This notebook handles:
+  - Tweet data collection and preprocessing
+  - Real-time data extraction workflows
+  - User interface components for interaction
+
+- **`ML_Project_Tweet_Detection.ipynb`**: Main project notebook containing:
+  - Machine learning model implementations
+  - Model training and evaluation
+  - Feature engineering and text preprocessing
+  - Performance comparisons across different algorithms
+
+- **`ML_Project.pdf`**: Comprehensive project report documenting:
+  - Project methodology and approach
+  - Model architecture and design decisions
+  - Results and performance analysis
+  - Conclusions and future work
+
+### Data Files
+
+- **`cleaned_tweets_data_with_punctuation.csv`**: Primary dataset containing:
+  - Preprocessed tweet text with punctuation preserved
+  - Crisis/non-crisis labels
+  - Additional metadata and features
+
+- **`latest_tweets_data.csv`**: Most recent tweet data collected from:
+  - Real-time scraping operations
+  - Location-based filtering
+  - Current crisis monitoring
+
+### Model Files
+
+- **`final_mlp_model.joblib`**: Serialized Multi-Layer Perceptron model
+  - Best performing model (92.68% F1-score)
+  - Trained on TF-IDF features
+  - Ready for real-time inference
+
+- **`tfidf_vectorizer.joblib`**: Pre-trained TF-IDF vectorizer
+  - Feature extraction for text data
+  - Consistent preprocessing pipeline
+  - Required for model inference
+
+### Visualization
+
+- **`cleaned_tweets_map.html`**: Interactive map visualization showing:
+  - Geographic distribution of crisis events
+  - Location-based crisis intensity
+  - Interactive filtering and exploration
+
 ## Technical Architecture
 
 ### Machine Learning Models
-- **Random Forest**: Primary ensemble method (92.24% accuracy)
-- **Support Vector Machine**: High-performance classifier (91.43% accuracy)
-- **XGBoost**: Gradient boosting for complex pattern recognition (91.11% accuracy)
-- **Logistic Regression**: Baseline linear classifier (91.07% accuracy)
+- **MLP (Multi-Layer Perceptron)**: Best neural network model (92.68% F1-score)
+- **Random Forest**: Top-performing ensemble method (92.24% F1-score)
+- **Support Vector Machine**: High-performance classifier (91.43% F1-score)
+- **XGBoost**: Gradient boosting for complex pattern recognition (91.11% F1-score)
+- **CNN**: Deep learning model for spatial feature extraction (89.68% F1-score)
+- **Logistic Regression**: Baseline linear classifier (91.07% F1-score)
 
 ### Data Processing Pipeline
 1. **Data Collection**: Automated tweet scraping using Selenium
-2. **Text Preprocessing**: Cleaning, normalization, and feature extraction
+2. **Text Preprocessing**: Cleaning, normalization, and tokenization
 3. **Feature Engineering**: TF-IDF vectorization and dimensionality reduction
-4. **Model Training**: Ensemble learning with hyperparameter optimization
+4. **Model Training**: Hyperparameter optimization and cross-validation
 5. **Real-time Classification**: Live tweet analysis and crisis detection
+6. **Visualization**: Interactive mapping and result presentation
 
 ## Dataset
 
 The model is trained on a comprehensive dataset of 247,000 tweets:
 - **Crisis tweets**: 129,000 samples
 - **Non-crisis tweets**: 118,000 samples
-- **Sources**: Multiple publicly available datasets including disaster-related tweets from various platforms
+- **Sources**: Multiple publicly available datasets including disaster-related tweets
 
 ## Installation
 
 ### Prerequisites
 - Python 3.8+
-- Chrome browser (for Selenium)
-- Required Python packages (see requirements.txt)
+- Jupyter Notebook/Lab
+- Chrome browser (for Selenium scraping)
+- ChromeDriver compatible with your Chrome version
 
 ### Setup
 ```bash
@@ -48,59 +122,69 @@ The model is trained on a comprehensive dataset of 247,000 tweets:
 git clone <repository-url>
 cd crisis-detection-model
 
-# Install dependencies
-pip install -r requirements.txt
+# Install required packages
+pip install pandas numpy scikit-learn joblib matplotlib seaborn
+pip install selenium beautifulsoup4 requests
+pip install folium plotly
+pip install xgboost tensorflow keras
+pip install nltk textblob
 
 # Download NLTK data
 python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('punkt')"
-
-# Set up Chrome driver for Selenium
-# Download ChromeDriver and place in PATH or project directory
 ```
 
 ## Usage
 
-### Training the Model
-```python
-# Load and preprocess data
-from src.data_preprocessing import load_and_clean_data
-from src.model_training import train_models
+### Running the Main Project
+```bash
+# Start Jupyter Notebook
+jupyter notebook
 
-# Load dataset
-data = load_and_clean_data('data/Combined_dataset.csv')
-
-# Train multiple models
-models = train_models(data)
+# Open and run the main project notebook
+# 1. Open ML_Project_Tweet_Detection.ipynb
+# 2. Run all cells to train models and evaluate performance
+# 3. Use Interface.ipynb for data extraction and real-time monitoring
 ```
 
-### Real-time Crisis Detection
+### Loading Pre-trained Models
 ```python
-from src.real_time_detector import CrisisDetector
+import joblib
+import pandas as pd
 
-# Initialize detector
-detector = CrisisDetector(model_path='models/best_model.pkl')
+# Load the trained model and vectorizer
+model = joblib.load('final_mlp_model.joblib')
+vectorizer = joblib.load('tfidf_vectorizer.joblib')
 
-# Start real-time monitoring
-detector.start_monitoring(location_filter=True, gps_radius=50)
+# Load and process new data
+new_tweets = pd.read_csv('latest_tweets_data.csv')
+
+# Transform text data
+X_new = vectorizer.transform(new_tweets['text'])
+
+# Make predictions
+predictions = model.predict(X_new)
+probabilities = model.predict_proba(X_new)
 ```
 
-### Interactive Map Interface
+### Interactive Map Visualization
 ```python
-from src.map_interface import CrisisMap
-
-# Launch interactive map
-crisis_map = CrisisMap()
-crisis_map.launch_interface()
+# Open cleaned_tweets_map.html in a web browser
+# Or use Python to display in Jupyter
+from IPython.display import IFrame
+IFrame('cleaned_tweets_map.html', width=800, height=600)
 ```
 
 ## Model Performance
 
-| Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|--------|----------|
-| Random Forest | 92.24% | 0.923 | 0.922 | 0.922 |
-| SVM | 91.43% | 0.915 | 0.914 | 0.914 |
-| XGBoost | 91.11% | 0.912 | 0.911 | 0.911 |
-| Logistic Regression | 91.07% | 0.911 | 0.910 | 0.910 |
+| Model | Embedding | F1-Score | Performance Notes |
+|-------|-----------|----------|-------------------|
+| **MLP** | TF-IDF | **92.68%** | Best overall performance |
+| **Random Forest** | TF-IDF | **92.24%** | Top ensemble method |
+| **SVM** | TF-IDF | **91.43%** | Robust high-dimensional classifier |
+| **XGBoost** | TF-IDF | **91.11%** | Efficient gradient boosting |
+| **Logistic Regression** | TF-IDF | **91.07%** | Strong baseline performance |
+| **Decision Tree** | TF-IDF | **90.87%** | Good non-linear pattern capture |
+| **CNN** | TF-IDF | **89.68%** | Deep learning approach |
 
 ## Data Preprocessing
 
@@ -109,163 +193,55 @@ crisis_map.launch_interface()
 2. **Normalization**: Converts to lowercase and removes special characters
 3. **Stopword Removal**: Filters out common non-informative words
 4. **Lemmatization**: Reduces words to their base forms
-5. **Parallel Processing**: Utilizes multiprocessing for efficient preprocessing
-
-### Feature Engineering
-- **TF-IDF Vectorization**: Converts text to numerical features
-- **Dimensionality Reduction**: PCA for computational efficiency
-- **Sentiment Analysis**: Polarity scores for enhanced classification
-- **N-gram Analysis**: Bigram and trigram features for context
-
-## API Endpoints
-
-### Crisis Detection API
-```
-POST /api/detect-crisis
-Content-Type: application/json
-
-{
-  "tweet": "Earthquake in downtown area, buildings shaking",
-  "location": {"lat": 40.7128, "lng": -74.0060},
-  "timestamp": "2024-01-15T10:30:00Z"
-}
-```
-
-### Real-time Monitoring
-```
-GET /api/monitor/start
-Parameters:
-  - location: GPS coordinates (optional)
-  - radius: Monitoring radius in km (default: 50)
-  - keywords: Additional crisis keywords (optional)
-```
-
-## Configuration
-
-### Environment Variables
-```bash
-# Twitter API credentials (if using Twitter API)
-TWITTER_API_KEY=your_api_key
-TWITTER_API_SECRET=your_api_secret
-TWITTER_ACCESS_TOKEN=your_access_token
-TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
-
-# Database configuration
-DATABASE_URL=sqlite:///crisis_detection.db
-
-# Model configuration
-MODEL_PATH=models/crisis_model.pkl
-CONFIDENCE_THRESHOLD=0.7
-```
-
-### Model Configuration
-```python
-# config.py
-MODEL_CONFIG = {
-    'random_forest': {
-        'n_estimators': 100,
-        'max_depth': 15,
-        'min_samples_split': 5
-    },
-    'svm': {
-        'C': 1.0,
-        'kernel': 'rbf',
-        'gamma': 'scale'
-    },
-    'xgboost': {
-        'n_estimators': 100,
-        'learning_rate': 0.1,
-        'max_depth': 6
-    }
-}
-```
+5. **TF-IDF Vectorization**: Converts text to numerical features
 
 ## Deployment
 
-### Docker Deployment
-```dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-EXPOSE 5000
-
-CMD ["python", "app.py"]
-```
-
-### Cloud Deployment
-The system is designed for cloud deployment with:
-- Scalable architecture for high-volume tweet processing
-- Load balancing for multiple model instances
-- Database integration for historical data storage
-- Real-time alerting system integration
-
-## Monitoring and Alerts
-
-### Performance Monitoring
-- Model accuracy tracking
-- Response time monitoring
-- Error rate analysis
-- Resource utilization metrics
-
-### Alert System
-- Real-time crisis notifications
-- Geographic-based alert filtering
-- Confidence level thresholds
-- Integration with emergency services
-
-## Contributing
-
-### Development Setup
+### Development Workflow
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# 1. Data Collection
+# Run Interface.ipynb to collect new tweet data
 
-# Install development dependencies
-pip install -r requirements-dev.txt
+# 2. Model Training
+# Run ML_Project_Tweet_Detection.ipynb to train/update models
 
-# Run tests
-pytest tests/
+# 3. Real-time Monitoring
+# Use trained models for live crisis detection
 
-# Code formatting
-black src/
-flake8 src/
+# 4. Visualization
+# Generate updated maps and visualizations
 ```
 
-### Code Structure
-```
-├── src/
-│   ├── data_preprocessing.py    # Data cleaning and preprocessing
-│   ├── model_training.py        # Model training and evaluation
-│   ├── real_time_detector.py    # Real-time crisis detection
-│   ├── map_interface.py         # Interactive map functionality
-│   └── utils.py                 # Utility functions
-├── models/                      # Trained model files
-├── data/                        # Dataset files
-├── tests/                       # Unit tests
-├── notebooks/                   # Jupyter notebooks for analysis
-└── requirements.txt             # Python dependencies
-```
+### Production Considerations
+- Model retraining with new data
+- Performance monitoring and validation
+- Scalability for high-volume processing
+- Integration with alerting systems
 
 ## Limitations
 
 - **Language Support**: Currently optimized for English tweets
-- **Real-time Processing**: Dependent on Twitter API rate limits
-- **Geographic Coverage**: GPS filtering requires location-enabled tweets
-- **Model Bias**: Performance may vary across different types of crises
+- **Data Dependencies**: Requires consistent data format and quality
+- **Model Drift**: Performance may degrade over time without retraining
+- **Geographic Coverage**: Limited by availability of location data
+- **Real-time Constraints**: Processing speed vs. accuracy trade-offs
 
 ## Future Enhancements
 
-- Multi-language support for global crisis detection
-- Integration with additional social media platforms
-- Advanced deep learning models (BERT, transformers)
-- Real-time dashboard with advanced analytics
+- Multi-language support for global coverage
+- Advanced transformer models (BERT, GPT-based)
+- Real-time dashboard with live updates
 - Mobile application for crisis alerts
 - Integration with emergency response systems
+- Improved deep learning architectures
+- Ensemble methods combining top models
+
+## Research References
+
+This project builds upon key research contributions:
+- **Ashktorab et al. (2014)**: Tweedr system for disaster tweet classification
+- **Chaudhari & Govilkar (2015)**: ML techniques for sentiment classification
+- **Nguyen et al. (2016)**: CNN-based disaster tweet classification
 
 ## License
 
@@ -280,8 +256,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Dataset contributors and open-source community
 - IIIT Delhi for academic support
-- Research papers and prior work in crisis detection
-- Open-source libraries and frameworks used
+- Research contributions from the academic community
+- Open-source libraries and frameworks
 
 ## Support
 
